@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Администратор</title>
+</head>
+<hr />
+    <body>
+    <h1>Типы продуктов</h1>
+    <form action="#" th:action="@{/api/v1/admin}" th:object="${productTypeDTO}" method="post">
+            <label for="name">Название</label>
+            <input type="text" th:field="*{name}" id="name" placeholder="Название">
+            <label for="tarif">Тариф</label>
+            <input type="text" th:field="*{tarif}" id="tarif" placeholder="Тариф">
+            <input type="submit" value="Добавить">
+        </form>
+        <hr />
+        <table style="width: 100%; border-collapse: collapse; border-style: solid; margin-left: auto; margin-right: auto;" border="2">
+            <tbody>
+            <tr>
+                <td>id</td>
+                <td>Название</td>
+                <td>OpenDate</td>
+                <td>CloseDate</td>
+                <td>Тариф</td>
+            </tr>
+            <tr th:each="prodType: ${productTypesDTO}">
+                <td style = "text-align: center;" th:text="${prodType.id}"/>
+                <td style = "text-align: center;" th:text="${prodType.name}"/>
+                <td style = "text-align: center;" th:text="${prodType.openDate}"/>
+                <td style = "text-align: center;" th:text="${prodType.closeDate}"/>
+                <td style = "text-align: center;" th:text="${prodType.tarif}"/>
+            </tr>
+            </tbody>
+        </table>
+        <hr />
+        <h1>Клиенты</h1>
+    <table style="width: 100%; border-collapse: collapse; border-style: solid; margin-left: auto; margin-right: auto;" border="2">
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td>Имя</td>
+            <td>Место рождения</td>
+            <td>Дата рождения</td>
+            <td>Адрес</td>
+            <td>Паспорт</td>
+        </tr>
+        <tr th:each="client: ${clients}">
+            <td style = "text-align: center;" th:text="${client.id}"/>
+            <td style = "text-align: center;" th:text="${client.name}"/>
+            <td style = "text-align: center;" th:text="${client.placeOfBirth}"/>
+            <td style = "text-align: center;" th:text="${client.dateOfBirth}"/>
+            <td style = "text-align: center;" th:text="${client.address}"/>
+            <td style = "text-align: center;" th:text="${client.passport}"/>
+        </tr>
+        </tbody>
+    </table>
+        <hr />
+    </body>
+</html>
